@@ -11,5 +11,5 @@ This project aims to analyze the emotion on the user reviews for a certain hotel
 # Analysis tools
 1. nltk
 
-# Technologies
+# Libraries
 See requirement.txt file
