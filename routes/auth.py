@@ -1,12 +1,17 @@
 # import libraries
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from flask_login import login_user, login_required, logout_user, current_user
+from flask_login import login_user, login_required, logout_user, current_user, LoginManager
 from werkzeug.security import generate_password_hash, check_password_hash
 from models.user import User
-from app import db
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
 
 # Blueprint of authentication routes
-auth_bp = Blueprint('auth', __name__)
+auth_bp = Blueprint('auth_bp', __name__)
+
+# Initialize Flask-Login
+login_manager = LoginManager()
 
 # Register route
 @auth_bp.route('/signup', methods=['GET', 'POST'])
@@ -40,6 +45,11 @@ def signup():
             db.session.close()
     
     return render_template('signup.html')
+
+# Define the user_loader callback function
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 # login route
 @auth_bp.route('/login', methods=['GET', 'POST'])
