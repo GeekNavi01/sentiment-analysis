@@ -28,4 +28,4 @@ def submit_review():
             db.session.rollback()
         finally:
             db.session.close()
-    return render_template('submit_review.html')ss
+    return render_template('submit_review.html')
