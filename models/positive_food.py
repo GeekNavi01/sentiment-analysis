@@ -1,5 +1,7 @@
 # import libraries and modules
-from app import db
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
 
 # PositiveFood model
 class PositiveFood(db.Model):
