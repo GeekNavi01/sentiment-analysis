@@ -9,7 +9,7 @@ from models.negative_sanitary import NegativeSanitary
 from models.positive_sanitary import PositiveSanitary
 
 # Blueprint of admin routes
-admin_bp = Blueprint('auth', __name__)
+admin_bp = Blueprint('admin_bp', __name__)
 
 # admin route
 @admin_bp.route('/admin_dashboard')

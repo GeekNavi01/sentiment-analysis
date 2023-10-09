@@ -1,11 +1,13 @@
 # import libraries and modules
 from flask import Blueprint, request, flash, redirect, render_template, url_for
 from flask_login import login_required, current_user
-from app import db
+from flask_sqlalchemy import SQLAlchemy
 from models.review import Review
 
+db = SQLAlchemy()
+
 # Blueprint of reviews routes
-reviews_bp = Blueprint('auth', __name__)
+reviews_bp = Blueprint('reviews_bp', __name__)
 
 # review route
 @reviews_bp.route('/submit_review', methods=['GET', 'POST'])
@@ -26,4 +28,4 @@ def submit_review():
             db.session.rollback()
         finally:
             db.session.close()
-    return render_template('submit_review.html')
+    return render_template('submit_review.html')ss
