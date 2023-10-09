@@ -9,8 +9,8 @@ from app import db
 auth_bp = Blueprint('auth', __name__)
 
 # Register route
-@auth_bp.route('/signup', methods=['GET', 'POST'])
-def signup():
+@auth_bp.route('/register', methods=['GET', 'POST'])
+def register():
     if request.method == 'POST':
         try:
             username = request.form['username']
@@ -39,7 +39,7 @@ def signup():
         finally:
             db.session.close()
     
-    return render_template('signup.html')
+    return render_template('login.html')
 
 # login route
 @auth_bp.route('/login', methods=['GET', 'POST'])
